@@ -88,7 +88,7 @@ def registration_request(request):
 def get_dealerships(request):
     context = {}
     if request.method == "GET":
-        return render(request, 'djangoapp/index.html', context)
+        return render(request, 'https://yinyinl33-3000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get', context)
 
 
 # Create a `get_dealer_details` view to render the reviews of a dealer

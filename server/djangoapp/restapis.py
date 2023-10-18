@@ -15,6 +15,10 @@ from requests.auth import HTTPBasicAuth
 
 # Create a get_dealers_from_cf method to get dealers from a cloud function
 # def get_dealers_from_cf(url, **kwargs):
+# Now, open the restapis.py file and in the ‘get_dealers_from_cf’ function, replace this previous line, which appears as follows
+#dealer_doc = dealer[“doc”]
+#with this new line below:
+#dealer_doc = dealer
 # - Call get_request() with specified arguments
 # - Parse JSON results into a CarDealer object list
 
