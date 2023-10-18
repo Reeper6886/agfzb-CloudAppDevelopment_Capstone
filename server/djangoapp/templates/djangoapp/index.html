@@ -20,7 +20,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Rebecca's Car Dealership</a>
+                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars Dealership</a>
                 <a class="navbar-brand" href="{% url 'djangoapp:about' %}">About Us</a>
                 <a class="navbar-brand" href="{% url 'djangoapp:contact' %}">Contact Us</a>
             </div>
@@ -46,6 +46,26 @@
             </ul>
         </div>
     </nav>
+    {% if user.is_authenticated %}
+        <p>Username: {{user.username}}, First name: {{user.first_name}}, Last name: {{user.last_name}} </p>
+        <div class="rightalign">
+            <div class="dropdown">
+                <button class="dropbtn">{{user.first_name}}</button>
+                <div class="dropdown-content">
+                     <a href="{% url 'djangoapp:logout' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="rightalign">
+            <div class="dropdown">
+                <button class="dropbtn">Visitor</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'djangoapp:login' %}">Login</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <!--Add a dealer table here -->
 
     </body>

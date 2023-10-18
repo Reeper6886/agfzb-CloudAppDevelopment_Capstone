@@ -52,6 +52,7 @@ def login_request(request):
 # def logout_request(request):
 # ...
 def logout_request(request):
+    print("Log out the user `{}`".format(request.user.username))
     logout(request)
     return redirect('djangoapp:index')
 
@@ -61,7 +62,7 @@ def logout_request(request):
 def registration_request(request):
     context = {}
     if request.method == 'GET':
-        return render(request, 'djangoapp/user_registration_bootstrap.html', context)
+        return render(request, 'djangoapp/registration.html', context)
     elif request.method == 'POST':
         # Check if user exists
         username = request.POST['username']
@@ -81,7 +82,7 @@ def registration_request(request):
             return redirect("djangoapp:index")
         else:
             context['message'] = "User already exists."
-            return render(request, 'djangoapp/user_registration_bootstrap.html', context)
+            return render(request, 'djangoapp/registration.html', context)
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
