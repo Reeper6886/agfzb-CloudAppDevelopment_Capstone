@@ -69,8 +69,8 @@ def get_dealers_from_cf(url, **kwargs):
         # For each dealer object
         for dealer in dealers:
             # Get its content in `doc` object
-            dealer_doc = dealer["doc"]
-            #dealer_doc = dealer
+            #dealer_doc = dealer["doc"]
+            dealer_doc = dealer
             # Create a CarDealer object with values in `doc` object
             dealer_obj = CarDealer(address=dealer_doc["address"], city=dealer_doc["city"], full_name=dealer_doc["full_name"],
                                    id=dealer_doc["id"], lat=dealer_doc["lat"], long=dealer_doc["long"],
@@ -107,8 +107,8 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 def analyze_review_sentiments(dealer_review):
 # - Call get_request() with specified arguments
 # - Get the returned sentiment label such as Positive or Negative
-    apikey = "GRoTDKE9oIkdQRe1nYNDDgjVUwISXbPUNM8Wc1HNwU_0"
-    url = "https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/14157bdf-5dcb-4adf-b08c-2e3ea9cc59f0"
+    apikey = "ViIC78QbeRRdyj5snFTVcw0V_A9hajV0gd7mCqz1yBCF"
+    url = "https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/940ea83d-0662-4ce1-9248-9679d95d8bb6"
     
     authenticator = IAMAuthenticator(apikey)
     natural_language_understanding = NaturalLanguageUnderstandingV1(

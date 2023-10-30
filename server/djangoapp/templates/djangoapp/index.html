@@ -50,26 +50,6 @@
             </ul>
         </div>
     </nav>
-    {% if user.is_authenticated %}
-        <p>Username: {{user.username}}, First name: {{user.first_name}}, Last name: {{user.last_name}} </p>
-        <div class="rightalign">
-            <div class="dropdown">
-                <button class="dropbtn">{{user.first_name}}</button>
-                <div class="dropdown-content">
-                     <a href="{% url 'djangoapp:logout' %}">Logout</a>
-                </div>
-            </div>
-        </div>
-    {% else %}
-        <div class="rightalign">
-            <div class="dropdown">
-                <button class="dropbtn">Visitor</button>
-                <div class="dropdown-content">
-                    <a href="{% url 'djangoapp:login' %}">Login</a>
-                </div>
-            </div>
-        </div>
-    {% endif %}
     <!--Add a dealer table here -->
     <table class="table" id="table" data-filter-control="true">
         <thead>
@@ -96,5 +76,9 @@
         </tbody>
     </table>
     </body>
-
+    <script>
+        $(function() {
+          $('#table').bootstrapTable()
+        })
+      </script>
 </html>
