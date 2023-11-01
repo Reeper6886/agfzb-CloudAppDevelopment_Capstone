@@ -158,24 +158,25 @@ def add_review(request, id):
 
             new_payload = {}
             new_payload["review"] = payload
+            
             review_post_url = "https://yinyinl33-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/post_review"
-
-            # review = {
-            #     "id":id,
-            #     "time":datetime.utcnow().isoformat(),
-            #     "name":request.user.username,  # Assuming you want to use the authenticated user's name
-            #     "dealership" :id,                
-            #     "review": request.POST["content"],  # Extract the review from the POST request
-            #     "purchase": True,  # Extract purchase info from POST
-            #     "purchase_date":request.POST["purchasedate"],  # Extract purchase date from POST
-            #     "car_make": car.car_make.name,  # Extract car make from POST
-            #     "car_model": car.name,  # Extract car model from POST
-            #     "car_year": int(car.year.strftime("%Y")),  # Extract car year from POST
-            # }
-            # review=json.dumps(review,default=str)
-            # new_payload1 = {}
-            # new_payload1["review"] = review
-            # print("\nREVIEW:",review)
-            post_request(review_post_url, new_payload, id=id)
-        return redirect("djangoapp:dealer_details", id=id)
+            
+            review = {
+                "id":id,
+                "name":request.user.username,  # Assuming you want to use the authenticated user's name
+                "dealership" :id,                
+                "review": request.POST["content"],  # Extract the review from the POST request
+                "purchase": True,  # Extract purchase info from POST
+                "purchase_date":request.POST["purchasedate"],  # Extract purchase date from POST
+                "car_make": car.car_make.name,  # Extract car make from POST
+                "car_model": car.name,  # Extract car model from POST
+                "car_year": int(car.year.strftime("%Y")),  # Extract car year from POST
+                "time":datetime.utcnow().isoformat(),
+            }
+            review=json.dumps(review,default=str)
+            new_payload1 = {}
+            new_payload1["review"] = review
+            print("\nREVIEW:",review)
+            post_request(review_post_url, review, id = id)
+        return redirect("djangoapp:dealer_details", id = id)
     

@@ -63,7 +63,8 @@ def get_request(url, **kwargs):
 # e.g., response = requests.post(url, params=kwargs, json=payload)
 def post_request(url, json_payload, **kwargs):
     print(kwargs)
-    print("GET from {} ".format(url))
+    print("POST to {} ".format(url))
+    print(json_payload)
     try:
         # Call get method of requests library with URL and parameters
         response = requests.post(url, json=json_payload, headers={'Content-Type': 'application/json'}, params=kwargs)
@@ -167,9 +168,10 @@ def get_dealer_reviews_from_cf(url, id):
     results = []
     # Call get_request with a URL parameter
     json_result = get_request(url, id=id)
+    print(json_result)
     if json_result:
         # Get the row list in JSON as dealers
-        reviews = json_result["docs"]
+        reviews = json_result
         # For each dealer object
         for review in reviews:
             # Create a CarDealer object with values in `doc` object
