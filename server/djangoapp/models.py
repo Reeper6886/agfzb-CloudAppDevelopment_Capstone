@@ -35,7 +35,7 @@ class CarModel(models.Model):
     ]
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=120)
-    dealer_id = models.IntegerField()
+    dealer_id = models.IntegerField(default=1)
     type = models.CharField(max_length=10, choices=CAR_TYPES)
     year = models.DateField()
     
@@ -85,3 +85,19 @@ class DealerReview:
     
     def __str__(self) -> str:
         return "Dealer: " + self.dealership + "Review: " + self.review
+
+class ReviewPost:
+
+    def __init__(self, dealership, name, purchase, review):
+        self.dealership = dealership
+        self.name = name
+        self.purchase = purchase
+        self.review = review
+        self.purchase_date = ""
+        self.car_make = ""
+        self.car_model = ""
+        self.car_year = ""
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+                            sort_keys=True, indent=4)
